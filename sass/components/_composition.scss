@@ -1,0 +1,46 @@
+.composition {
+    position: relative;
+    &__photo {
+        width: 55%;
+        border-radius: 2px;
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        position: absolute;
+        z-index: 10;
+        transition: all 0.2s;
+        &--p1 {
+            left: 0;
+            top: -2rem;
+        }
+        &--p2 {
+            right: 0;
+            top: 2rem;
+        }
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+        &:hover {
+            /*
+                An outline is a line that is drawn around elements, outside the borders, to make the element "stand out".
+                The outline property is a shorthand property for setting the following individual outline properties:
+                
+                - outline-width
+                - outline-style (required)
+                - outline-color
+                
+                The outline property is specified as one, two, or three values from the list above.
+
+                NOTE: The outline is not a part of the element's dimensions, therefore the element's width and height properties 
+                do not contain the width of the outline.
+            */
+            outline: 1.5rem solid $color-primary;
+            outline-offset: 2rem;
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+        }
+    }
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+    }
+}

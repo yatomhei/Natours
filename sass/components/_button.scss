@@ -1,0 +1,100 @@
+/*
+  ========================================
+  Buttons
+
+  - btn
+  - btn--white
+  - btn--animated
+  ========================================
+*/
+
+.btn {
+    &:link,
+    &:visited {
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all 0.2s;
+        /* needed for the positioning of the ::after element */
+        position: relative;
+        font-size: $default-font-size;
+    }
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        &::after {
+            // when we hover over the btn, the white shadow behind the button (see ::after) 
+            // is scaled up so it shows around the button.
+            transform: scale(1.4, 1.6);
+            opacity: 0;
+        }
+    }
+    &:active {
+        transform: translateY(.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
+    }
+    /* in the ::after element we create the white shadow effect.
+       The ::after element is treated as a child element of the btn element */
+    &::after {
+        content: "";
+        display: inline-block;
+        /* we set the width/height to 100% so the ::after element 
+        will get the same width and height as it's parent element (the btn element) */
+        width: 100%;
+        height: 100%;
+        border-radius: 10rem;
+        /* move the ::after element up behind the parent (button) element */
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+    &--animated {
+        animation: 0.5s ease-out 0.75s moveInBottom;
+        /*  ANIMATION-FILL-MODE defines what values are applied by the animation OUTSIDE the time it is executing.
+
+        BACKWARDS: The beginning property value (the 0% keyframe) is applied BEFORE the animation is displayed, 
+        during the periode defined by animation-delay. In our case it will make the button invisible until 
+        the animation is played and the button slides in. */
+        animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        font-size: $default-font-size;
+        color: $color-primary;
+        /* we want to set padding and margin so we need block display */
+        display: inline-block;
+        text-decoration: none;
+        /* we use px units here and not rem because the values are very small */
+        border-bottom: 1px solid $color-primary;
+        padding: 3px;
+        transition: all .2s;
+    }
+    &:hover {
+        background-color: $color-primary;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-2px);
+    }
+    &:active {
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(0);
+    }
+    &::after {
+        content: "→";
+        padding-left: 0.5rem;
+    }
+}

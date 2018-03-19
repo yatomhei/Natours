@@ -1,0 +1,30 @@
+/*
+  ========================================
+    Global Settings
+  ========================================
+*/
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    /* 
+        The browser specify a root font size of 16px, but the user can change it as he likes.
+        We will therefor define our root font-size in percentages to make it relative to the 
+        browser default/user settings.
+        In order to make the units calculations easier we want to set the root font-size (1 rem) 
+        to 10px, since the default browser root font-size is 16px, then 10px becomes: 
+        10px/16px = 0.625 => 62.5%
+     */
+    font-size: 62.5%; // 62.5% => 1 rem = 10px
+}
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+}

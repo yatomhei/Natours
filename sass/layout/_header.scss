@@ -1,0 +1,30 @@
+.header {
+    position: relative;
+    /* 95% of the viewport height */
+    height: 95vh;
+    background-image: linear-gradient(to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url(../img/hero.jpg);
+    background-size: cover;
+    /* the part of the image that stays in its original position when the screen is resized  */
+    background-position: top;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+    &__logo {
+        height: 3.5rem;
+        animation: 2s ease-in 50ms logoFadeIn
+    }
+    &__text-box {
+        /* we use absoulte positioning + translate(-50%, -50%) to center the text-box */
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        /* translate moves an element sideways or up and down.
+         x = -50% moves the element 50% of its width to the left, 
+         y = -50% moves the element 50% of its height to the top. */
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+}
